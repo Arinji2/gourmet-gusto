@@ -4,10 +4,12 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 .hide-scrollbar::-webkit-scrollbar-track {
   width: 5px;
+  height: 5px;
 }
 
 .hide-scrollbar::-webkit-scrollbar-thumb {

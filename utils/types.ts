@@ -9,3 +9,13 @@ export interface RecipeId {
   image: string;
   imageType: string;
 }
+
+export interface IngredientsRecipe {
+  recipeName: string;
+  minutesToMake: string;
+  ingredients: string[];
+  steps: string[];
+  isHealthy: boolean;
+  isVegetarian: boolean;
+  isGlutenFree: boolean;
+}

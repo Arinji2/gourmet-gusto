@@ -25,7 +25,6 @@ export default async function SearchPage({
       return res;
     })
   )) as string[];
-  console.log(links);
 
   return (
     <div className="flex h-fit min-h-[100svh] w-full flex-col items-center justify-center bg-bg">

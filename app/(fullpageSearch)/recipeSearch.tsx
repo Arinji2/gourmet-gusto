@@ -1,11 +1,15 @@
 "use client";
 
+import { faSpinner } from "@fortawesome/fontawesome-free-solid";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Search() {
+  const [clicked, setClicked] = useState(false);
   const [search, setSearch] = useState("");
   const router = useRouter();
   return (
@@ -28,15 +32,23 @@ export default function Search() {
         placeholder="Pasta"
         onChange={(e) => setSearch(e.target.value)}
       />
-      <p
+      <div
         className="z-40 mt-10 bg-vibrant p-4 pl-12 pr-12 font-verdana text-xl font-bold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:cursor-pointer md:text-4xl"
         onClick={() => {
+          setClicked(true);
           if (search.length > 0) router.push(`/recipes/search?input=${search}`);
           else router.push(`/recipes/search?input=Empty`);
         }}
       >
-        Search
-      </p>
+        {clicked ? (
+          <FontAwesomeIcon
+            icon={faSpinner as IconProp}
+            className="h-[40px] w-[40px] animate-spin "
+          />
+        ) : (
+          <p>Search</p>
+        )}
+      </div>
 
       <div className="mb-10 flex h-fit w-fit flex-col items-center justify-center hover:cursor-pointer">
         <Link

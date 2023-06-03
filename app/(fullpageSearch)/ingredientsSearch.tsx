@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import SearchButton from "./searchButton";
 
 export default function Search() {
   const [search, setSearch] = useState("Carrots");
@@ -102,23 +103,7 @@ export default function Search() {
                 )
               )}
             </div>
-            <p
-              className="z-40 mb-3 bg-vibrant p-4 pl-12 pr-12 font-verdana text-lg font-bold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:cursor-pointer md:text-2xl"
-              onClick={() => {
-                const query = JSON.stringify(
-                  ingredients.map((ing) => ing.name)
-                );
-                if (query.length > 0)
-                  router.push(
-                    `/ingredients/search?input=${query
-                      .substring(4, query.length - 1)
-                      .replaceAll(`"`, ``)}`
-                  );
-                else router.push(`/ingredients/search?input=Help`);
-              }}
-            >
-              Search
-            </p>
+            <SearchButton ingredients={ingredients} />
           </div>
         </div>
       </div>
