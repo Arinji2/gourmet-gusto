@@ -66,7 +66,10 @@ export default async function SearchPage({
 
       <div className="z-20 mt-10 flex h-full w-[90vw] flex-col items-start justify-start gap-10 md:w-[70vw]">
         {data.steps.map((step, index) => (
-          <div className="flex h-fit w-fit flex-row items-center justify-center gap-3">
+          <div
+            className="flex h-fit w-fit flex-row items-center justify-center gap-3"
+            key={index}
+          >
             <p className="font-verdana text-lg font-medium text-vibrant md:text-xl">
               {index + 1}.
             </p>
