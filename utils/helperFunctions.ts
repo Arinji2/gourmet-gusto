@@ -49,7 +49,7 @@ export const genRecipe = async (ingredients: string) => {
 async function resetIp() {
   try {
     const headers = {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     };
     const options = {
       method: "POST",
