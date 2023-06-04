@@ -1,6 +1,7 @@
 export interface RecipeIdGroup {
   results: RecipeId[];
   number: number;
+  status: string;
 }
 
 export interface RecipeId {

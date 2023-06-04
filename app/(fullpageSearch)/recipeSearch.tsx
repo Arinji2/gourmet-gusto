@@ -13,7 +13,7 @@ export default function Search() {
   const [search, setSearch] = useState("");
   const router = useRouter();
   return (
-    <div className="relative flex h-fit w-full snap-center flex-col items-center justify-center gap-10">
+    <div className="relative flex h-fit min-h-[100svh] w-full snap-center flex-col items-center justify-center gap-10">
       <Image
         alt="Image"
         fill

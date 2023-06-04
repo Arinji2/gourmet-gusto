@@ -19,22 +19,28 @@ export default async function SearchPage({
   );
 
   const data = (await res.json()) as RecipeIdGroup;
-  const links = (await Promise.all(
-    data.results.map(async (recipe) => {
-      const res = await fetchIndividualRecipeLink({ id: recipe.id });
-      return res;
-    })
-  )) as string[];
+  let links: string[] = [];
+  console.log(data);
+  if (data.status !== "failure" && data.results?.length !== 0) {
+    links = (await Promise.all(
+      data.results.map(async (recipe) => {
+        const res = await fetchIndividualRecipeLink({ id: recipe.id });
+        return res;
+      })
+    )) as string[];
+  }
 
   return (
     <div className="flex h-fit min-h-[100svh] w-full flex-col items-center justify-center bg-bg">
       <h1 className="pt-[150px] font-verdana text-[50px] font-bold text-vibrant md:text-[80px]">
         Recipes
       </h1>
-      {data.results.length === 0 ? (
+      {data.results?.length === 0 || data.status === "failure" ? (
         <div className="mt-10 flex h-full w-full flex-col items-center justify-center gap-10">
           <p className="text-center text-[30px] font-bold text-white md:text-[50px]">
-            No Results Found
+            {data.status === "failure"
+              ? "Something went wrong"
+              : "No results found"}
           </p>
         </div>
       ) : (

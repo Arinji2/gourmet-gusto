@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Search from "./(fullpageSearch)/recipeSearch";
+import Link from "next/link";
+import SearchMainPage from "./search/page";
 
 export default function Home() {
   return (
@@ -22,12 +24,15 @@ export default function Home() {
           <p className="z-10 text-center font-verdana text-[30px] font-medium text-white">
             Savor. Create. Inspire.
           </p>
-          <p className="z-10 border-4 border-[#F97B22] bg-vibrant p-3 font-verdana text-[25px] font-bold text-white transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-white hover:text-vibrant">
+          <Link
+            href="/search"
+            className="z-10 border-4 border-[#F97B22] bg-vibrant p-3 font-verdana text-[25px] font-bold text-white transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-white hover:text-vibrant"
+          >
             Start Cooking
-          </p>
+          </Link>
         </div>
       </div>
-      <div className="relative flex h-fit min-h-[100svh] w-full snap-center flex-col items-center justify-center shadow-lg shadow-black">
+      <div className="relative flex h-fit min-h-[100svh] w-full snap-center flex-col items-center justify-center">
         <Image
           src="/screen2.jpg"
           alt="Screen 2"
@@ -121,7 +126,7 @@ export default function Home() {
           3 Steps to Reach Food Heaven
         </p>
       </div>
-      <Search />
+      <SearchMainPage />
     </div>
   );
 }
