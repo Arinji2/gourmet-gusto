@@ -1,8 +1,6 @@
 "use client";
 
-import { faBars, faTimes } from "@fortawesome/fontawesome-free-solid";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -36,8 +34,8 @@ function NavBar() {
           nav
             ? "bg-black md:bg-transparent "
             : scroll
-            ? "bg-black md:bg-transparent "
-            : " bg-transparent md:bg-transparent "
+              ? "bg-black md:bg-transparent "
+              : " bg-transparent md:bg-transparent "
         }flex h-full w-full flex-row items-start justify-between pt-10 transition-all  duration-300 ease-in-out md:w-[30%] md:justify-center`}
       >
         <Image
@@ -50,11 +48,17 @@ function NavBar() {
           priority
           loading="eager"
         />
-        <FontAwesomeIcon
-          icon={nav ? (faTimes as IconProp) : (faBars as IconProp)}
-          className="z-[300000] mr-4 h-[40px] w-[40px] text-vibrant transition-all duration-500 ease-in-out md:hidden"
-          onClick={() => setNav(!nav)}
-        />
+        {nav ? (
+          <X
+            className="z-[300000] mr-4 h-[40px] w-[40px] text-vibrant transition-all duration-500 ease-in-out md:hidden"
+            onClick={() => setNav(!nav)}
+          />
+        ) : (
+          <Menu
+            className="z-[300000] mr-4 h-[40px] w-[40px] text-vibrant transition-all duration-500 ease-in-out md:hidden"
+            onClick={() => setNav(!nav)}
+          />
+        )}
       </Link>
       <div
         className={`fixed top-0  flex h-[100vh] w-full md:hidden ${

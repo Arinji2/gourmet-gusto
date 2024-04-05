@@ -1,8 +1,6 @@
 "use client";
 
-import { faSpinner } from "@fortawesome/fontawesome-free-solid";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 /*const [ingredients, setIngredients] = useState([
@@ -31,10 +29,7 @@ function SearchButton({ ingredients }: { ingredients: any[] }) {
       }}
     >
       {clicked ? (
-        <FontAwesomeIcon
-          icon={faSpinner as IconProp}
-          className="h-[40px] w-[40px] animate-spin "
-        />
+        <Loader2 className="h-[40px] w-[40px] animate-spin " />
       ) : (
         <p>Search</p>
       )}
