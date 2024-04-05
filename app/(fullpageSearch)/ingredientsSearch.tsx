@@ -1,8 +1,6 @@
 "use client";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { faTrash } from "@fortawesome/fontawesome-free-solid";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -88,8 +86,7 @@ export default function Search() {
                         {ingredient.name}
                       </p>
                     </div>
-                    <FontAwesomeIcon
-                      icon={faTrash as IconProp}
+                    <Trash2
                       className="h-[20px] w-[20px] text-red-500 md:h-[30px] md:w-[30px]"
                       onClick={() => {
                         setIngredients(

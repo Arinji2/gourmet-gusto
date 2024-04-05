@@ -1,9 +1,6 @@
 "use client";
 
-import { faHeart, faLeaf } from "@fortawesome/fontawesome-free-solid";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
+import { Heart, Leaf, Wheat } from "lucide-react";
 import { useState } from "react";
 
 function Tags({
@@ -43,33 +40,40 @@ function Tags({
       </div>
       <div className="flex flex-row items-center justify-center gap-2">
         {isHealthy && (
-          <FontAwesomeIcon
-            icon={faHeart as IconProp}
+          <Heart
             className="h-[30px] w-[30px] text-red-500 hover:cursor-pointer"
             onClick={() => {
+              setIsClicked("Healthy");
+              setClickedColor("text-red-500 ");
+            }}
+            onMouseOver={() => {
               setIsClicked("Healthy");
               setClickedColor("text-red-500 ");
             }}
           />
         )}
         {isGluten && (
-          <Image
-            src="/icons/gluten.svg"
-            alt="Gluten"
-            width={30}
-            height={30}
+          <Wheat
+            className="h-[30px] w-[30px] text-blue-500 hover:cursor-pointer"
             onClick={() => {
               setIsClicked("Gluten Free");
               setClickedColor("text-blue-500 ");
             }}
-            className="hover:cursor-pointer"
+            onMouseOver={() => {
+              setIsClicked("Gluten Free");
+              setClickedColor("text-blue-500 ");
+            }}
           />
         )}
+
         {isVeg && (
-          <FontAwesomeIcon
-            icon={faLeaf as IconProp}
+          <Leaf
             className="h-[30px] w-[30px] text-green-500 hover:cursor-pointer"
             onClick={() => {
+              setIsClicked("Vegetarian");
+              setClickedColor("text-green-500 ");
+            }}
+            onMouseOver={() => {
               setIsClicked("Vegetarian");
               setClickedColor("text-green-500 ");
             }}

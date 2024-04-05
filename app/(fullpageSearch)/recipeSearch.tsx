@@ -1,8 +1,6 @@
 "use client";
 
-import { faSpinner } from "@fortawesome/fontawesome-free-solid";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -41,10 +39,7 @@ export default function Search() {
         }}
       >
         {clicked ? (
-          <FontAwesomeIcon
-            icon={faSpinner as IconProp}
-            className="h-[40px] w-[40px] animate-spin "
-          />
+          <Loader2 className="h-[40px] w-[40px] animate-spin " />
         ) : (
           <p>Search</p>
         )}
