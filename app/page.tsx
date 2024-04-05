@@ -10,7 +10,7 @@ export default function Home() {
       <div className="relative flex h-[100svh] w-full flex-col items-center  justify-center md:snap-start">
         <video
           autoPlay
-          src={"https://files.catbox.moe/ctbsfl.mp4"}
+          src={"https://files.catbox.moe/xqesfp.mp4"}
           muted
           loop
           className="absolute h-full w-full object-cover"
