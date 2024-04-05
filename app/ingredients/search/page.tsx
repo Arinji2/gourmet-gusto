@@ -1,21 +1,14 @@
 import { genRecipe } from "@/utils/helperFunctions";
-import { IngredientsRecipe } from "@/utils/types";
 import Image from "next/image";
-import Tags from "./tags";
 import RedirectButton from "./redirectButton";
-import { redirect } from "next/navigation";
+import Tags from "./tags";
 
 export default async function SearchPage({
   searchParams,
 }: {
   searchParams: { input: string };
 }) {
-  const res = (await genRecipe(searchParams.input)) as unknown;
-  let data;
-  if (res === "invalid_request_error") {
-    redirect("/ingredients");
-  }
-  data = res as IngredientsRecipe;
+  const data = await genRecipe(searchParams.input);
   return (
     <div className="flex h-fit min-h-[100svh] w-full flex-col items-center justify-start bg-black">
       <div className="fixed top-0 h-[100svh] w-full">
