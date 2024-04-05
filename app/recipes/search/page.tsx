@@ -1,8 +1,7 @@
-import { RecipeIdGroup } from "@/utils/types";
-import * as React from "react";
-import RedirectButton from "../redirectButton";
-import RecipeCard from "../recipeCard";
 import { fetchIndividualRecipeLink } from "@/utils/helperFunctions";
+import { RecipeIdGroup } from "@/utils/types";
+import RecipeCard from "../recipeCard";
+import RedirectButton from "../redirectButton";
 
 export default async function SearchPage({
   searchParams,
@@ -20,7 +19,7 @@ export default async function SearchPage({
 
   const data = (await res.json()) as RecipeIdGroup;
   let links: string[] = [];
-  console.log(data);
+
   if (data.status !== "failure" && data.results?.length !== 0) {
     links = (await Promise.all(
       data.results.map(async (recipe) => {

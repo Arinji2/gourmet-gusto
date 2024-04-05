@@ -24,12 +24,8 @@ function Tags({
     >
       <p
         className="pt-3 font-verdana text-[20px] font-bold text-white"
-        onMouseOver={() => {
-          console.log("Run");
-        }}
-        onMouseLeave={() => {
-          console.log("Out");
-        }}
+        onMouseOver={() => {}}
+        onMouseLeave={() => {}}
       >
         Tags
       </p>
