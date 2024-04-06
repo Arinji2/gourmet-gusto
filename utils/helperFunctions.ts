@@ -14,7 +14,7 @@ let tries = 0;
 
 export async function genRecipe(ingredients: string) {
   if (tries <= 2) {
-    const res = await fetch("http://localhost:3000/completions", {
+    const res = await fetch("https://ai.arinji.com/completions", {
       method: "POST",
       headers: {
         Authorization: `${process.env.ACCESS_KEY}`,
