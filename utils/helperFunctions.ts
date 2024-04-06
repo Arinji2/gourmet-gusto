@@ -14,12 +14,12 @@ let tries = 0;
 
 export async function genRecipe(ingredients: string) {
   if (tries <= 2) {
-    console.log("tries", tries);
     const res = await fetch("http://localhost:3000/completions", {
       method: "POST",
       headers: {
         Authorization: `${process.env.ACCESS_KEY}`,
         SPEED: "FAST",
+        FROM: "GOURMET-GUSTO",
         "Content-Type": "application/json",
       },
       cache: "force-cache",
@@ -50,6 +50,6 @@ export async function genRecipe(ingredients: string) {
     }
   } else {
     tries = 0;
-    redirect("/");
+    redirect("/ingredients");
   }
 }
