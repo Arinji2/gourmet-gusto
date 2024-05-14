@@ -1,3 +1,4 @@
+export const maxDuration = 60;
 import { genRecipe } from "@/utils/helperFunctions";
 import Image from "next/image";
 import RedirectButton from "./redirectButton";
