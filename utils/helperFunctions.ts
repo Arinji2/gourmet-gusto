@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { jsonrepair } from "jsonrepair";
 import { IngredientsRecipeSchema } from "./schema";
 
 export const fetchIndividualRecipeLink = async ({ id }: { id: number }) => {
@@ -11,6 +11,8 @@ export const fetchIndividualRecipeLink = async ({ id }: { id: number }) => {
 };
 
 let tries = 0;
+const sampleString =
+  '{"recipeName":"Chicken Rice Bowl","minutesToMake":30,"ingredients":["Chicken","Rice","Carrots"],"steps":["Cook the rice according to package instructions.","Dice the chicken into bite-sized pieces.","Dice the carrots into small pieces.","Heat a pan over medium heat and add the chicken. Cook until browned on all sides.","Add the carrots to the pan and cook for 5 minutes, or until softened.","Serve the rice in a bowl, top with the chicken and carrots."],"isHealthy":true,"isVegetarian":false,"isGlutenFree":true}';
 
 export async function genRecipe(ingredients: string) {
   if (tries <= 2) {
@@ -18,38 +20,38 @@ export async function genRecipe(ingredients: string) {
       method: "POST",
       headers: {
         Authorization: `${process.env.ACCESS_KEY}`,
-        SPEED: "FAST",
         FROM: "GOURMET-GUSTO",
         "Content-Type": "application/json",
       },
       cache: "force-cache",
-
       body: JSON.stringify([
         {
-          role: "system",
-          content:
-            "Make sure every response is unique and not similar to previous responses.",
-        },
-        {
           role: "user",
-          content: `I have ${ingredients} in my fridge. I want to make a recipe with these ingredients. Make sure the recipe is healthy and easy to make. You can only use the ingredients I have in my fridge and nothing else. Return the recipe in the following format, a JSON object with the following keys: recipeName, minutesToMake, ingredients, steps, isHealthy, isVegetarian, isGlutenFree. The recipeName is the name of the recipe(Make sure the name is short and concise. Try for a maximum of 5 Words), minutesToMake is the number of minutes it takes to make the recipe, ingredients is a list of ingredients, steps is an array of steps to make the recipe(Explain all the steps in detail). isHealthy is a boolean which is true if the recipe is healthy and false if it is not. isVegetarian is a boolean which is true if the recipe is vegetarian and false if it is not. isGlutenFree is a boolean which is true if the recipe is gluten free and false if it is not. Make sure the response is a VALID JSON OBJECT`,
+          content: `I have ${ingredients} in my fridge. I want to make a recipe with these ingredients. Make sure the recipe is healthy and easy to make. You can only use the ingredients I have in my fridge and nothing else. Return the recipe in the following format: ${sampleString}. ,`,
         },
       ]),
     });
 
     try {
-      var rawData = await res.json();
+      const jsonString: string = (await res.json()).message.replace(
+        "json ",
+        ""
+      );
 
-      const data = JSON.parse(rawData.message.content);
-      const parsed = IngredientsRecipeSchema.parse(data);
+      const repairedObject = jsonrepair(jsonString);
 
-      return parsed;
+      const parsedObject = JSON.parse(repairedObject);
+
+      const validatedObject = IngredientsRecipeSchema.parse(parsedObject);
+
+      return validatedObject;
     } catch (e) {
       tries++;
+      console.log(e);
       return await genRecipe(ingredients);
     }
   } else {
     tries = 0;
-    redirect("/ingredients");
+    throw new Error("Failed to generate recipe");
   }
 }
