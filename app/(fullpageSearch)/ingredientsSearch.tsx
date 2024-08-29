@@ -33,7 +33,13 @@ export default function Search() {
         Ingredients Search
       </h2>
       <div className="mb-5 flex h-full w-full flex-col items-center justify-center md:flex-row">
-        <div className="flex h-full w-[90%] flex-col items-center justify-center md:w-[60%]">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          className="flex h-full w-[90%] flex-col items-center justify-center md:w-[60%]"
+        >
           <input
             type="text"
             className="z-40 h-fit w-[90%] rounded-lg bg-[#D9D9D9] p-3 font-verdana text-xl font-medium text-bg outline-none md:w-[80%] md:text-4xl"
@@ -41,7 +47,8 @@ export default function Search() {
             onChange={(e) => setSearch(e.target.value)}
             ref={inputBox}
           />
-          <p
+          <button
+            type="submit"
             className="z-40 mt-10 bg-vibrant p-4 pl-12 pr-12 font-verdana text-xl font-bold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:cursor-pointer md:text-4xl"
             onClick={() => {
               if (search.length > 0)
@@ -53,7 +60,7 @@ export default function Search() {
             }}
           >
             Add
-          </p>
+          </button>
 
           <div className="mb-10 flex h-fit w-fit flex-col items-center justify-center hover:cursor-pointer">
             <Link
@@ -64,7 +71,7 @@ export default function Search() {
             </Link>
             <div className="z-40 h-[4px] w-full rounded-lg bg-white"></div>
           </div>
-        </div>
+        </form>
         <div className="flex h-full w-[95%] flex-col items-center justify-center md:w-[40%]">
           <div className="z-40 flex  h-[70svh] w-[90%] flex-col items-center justify-start rounded-lg bg-bg">
             <p className="pt-10 font-verdana text-3xl font-bold text-white md:text-4xl">
