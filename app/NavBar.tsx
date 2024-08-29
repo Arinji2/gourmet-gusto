@@ -91,7 +91,7 @@ function NavBar() {
           <Link
             onClick={() => setNav(false)}
             href="/search"
-            className="z-10 border-4 border-[#F97B22] bg-white p-3 font-verdana text-[20px] font-bold text-vibrant transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-vibrant hover:text-white"
+            className="z-10 border-4 border-[#F97B22] bg-white p-3 font-verdana text-[20px] font-bold text-vibrant transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-vibrant rounded-sm hover:text-white"
           >
             Start Cooking
           </Link>
@@ -122,7 +122,7 @@ function NavBar() {
       <div className="hidden h-full w-[30%] flex-col  items-center justify-center md:flex">
         <Link
           href="/search"
-          className="z-10 border-4 border-[#F97B22] bg-white p-3 font-verdana text-[20px] font-bold text-vibrant transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-vibrant hover:text-white"
+          className="z-10 border-4 border-[#F97B22] bg-white p-3 font-verdana text-[20px] font-bold text-vibrant transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-vibrant rounded-sm hover:text-white"
         >
           Start Cooking
         </Link>

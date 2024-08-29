@@ -31,7 +31,7 @@ export default function Search() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <div
-        className="z-40 mt-10 bg-vibrant p-4 pl-12 pr-12 font-verdana text-xl font-bold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:cursor-pointer md:text-4xl"
+        className="z-40 mt-10 bg-vibrant rounded-sm p-4 pl-12 pr-12 font-verdana text-xl font-bold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:cursor-pointer md:text-4xl"
         onClick={() => {
           setClicked(true);
           if (search.length > 0) router.push(`/recipes/search?input=${search}`);

@@ -25,7 +25,7 @@ export default function Home() {
           </p>
           <Link
             href="/search"
-            className="z-10 border-4 border-[#F97B22] bg-vibrant p-3 font-verdana text-[25px] font-bold text-white transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-white hover:text-vibrant"
+            className="z-10 border-4 border-[#F97B22] bg-vibrant rounded-sm p-3 font-verdana text-[25px] font-bold text-white transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-white hover:text-vibrant"
           >
             Start Cooking
           </Link>
